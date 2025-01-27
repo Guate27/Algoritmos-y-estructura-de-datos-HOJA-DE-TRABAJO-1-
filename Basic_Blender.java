@@ -46,3 +46,38 @@ public class BasicBlender implements Blender {
         contenido = "";
         System.out.println("Licuadora vaciada.");
     }
+
+    @Override
+    public void aumentarVelocidad() {
+        if (!encendido) {
+            System.out.println("No se puede aumentar la velocidad porque la licuadora está apagada.");
+        } else if (velocidad < 5) {
+            velocidad++;
+            System.out.println("Velocidad aumentada a: " + velocidad);
+        } else {
+            System.out.println("Velocidad máxima alcanzada.");
+        }
+    }
+
+    @Override
+    public void reducirVelocidad() {
+        if (!encendido) {
+            System.out.println("No se puede reducir la velocidad porque la licuadora está apagada.");
+        } else if (velocidad > 0) {
+            velocidad--;
+            System.out.println("Velocidad reducida a: " + velocidad);
+        } else {
+            System.out.println("La licuadora ya está en la velocidad mínima.");
+        }
+    }
+
+    @Override
+    public boolean estaLlena() {
+        System.out.println("Estado de la licuadora: " + (llena ? "Llena" : "Vacía"));
+        return llena;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+}
