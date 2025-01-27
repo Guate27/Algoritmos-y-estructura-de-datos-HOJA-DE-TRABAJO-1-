@@ -1,3 +1,4 @@
+import java.util.Scanner
 public class BasicBlender implements Blender {
     private boolean encendido;
     private boolean llena;
@@ -80,4 +81,57 @@ public class BasicBlender implements Blender {
     public int getVelocidad() {
         return velocidad;
     }
+
+    public static void main(String[] args){
+        BasicBlender blender = new BasicBlender();
+        Scanner scanner = new Scanner;
+        int opcion;
+        do{
+            System.out.println("\n--- Menú de la Licuadora ---");
+            System.out.println("1. Encender");
+            System.out.println("2. Apagar");
+            System.out.println("3. Llenar");
+            System.out.println("4. Vaciar");
+            System.out.println("5. Aumentar Velocidad");
+            System.out.println("6. Reducir Velocidad");
+            System.out.println("7. Verificar si está llena");
+            System.out.println("8. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer
+
+            switch (opcion) {
+                case 1:
+                    blender.encender();
+                    break;
+                case 2:
+                    blender.apagar();
+                    break;
+                case 3:
+                    System.out.print("Ingrese el contenido para llenar la licuadora: ");
+                    String contenido = scanner.nextLine();
+                    blender.llenar(contenido);
+                    break;
+                case 4:
+                    blender.vaciar();
+                    break;
+                case 5:
+                    blender.aumentarVelocidad();
+                    break;
+                case 6:
+                    blender.reducirVelocidad();
+                    break;
+                case 7:
+                    blender.estaLlena();
+                    break;
+                case 8:
+                    System.out.println("Saliendo del programa.");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        } while (opcion != 8);
+        scanner.close();
+    }
+        
 }
